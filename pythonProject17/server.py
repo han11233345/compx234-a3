@@ -33,4 +33,9 @@ def handle_client(client_socket):
             else:
                 client_socket.send(f"ERR {k} does not exist".encode('utf-8'))
 
+        elif request == 'EXIT':
+
+              client_socket.close()
+              break
+
 
