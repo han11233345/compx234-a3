@@ -25,3 +25,12 @@ def handle_client(client_socket):
             else:
                 client_socket.send(f"ERR {k} does not exist".encode('utf-8'))
 
+        elif request.startswith('DELETE'):
+            _, k = request.split()
+            if k in tuple_space:
+                v = tuple_space.pop(k)
+                client_socket.send(f"OK {k} {v} removed".encode('utf-8'))
+            else:
+                client_socket.send(f"ERR {k} does not exist".encode('utf-8'))
+
+
